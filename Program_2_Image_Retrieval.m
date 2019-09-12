@@ -1,38 +1,57 @@
 %% 
 % The purpose of this program is to do image retrieval from the created
 % database , image folder inside working path
-clc; clear all; close all;
-
+% clc; clear all; close all;
+% global datab;
+global imfiler;
 working_path = 'D:\Documents\MATLAB\MMTECH\Assignment';
 cd(working_path);
 addpath(pwd);
 
 
 %% Step 0: Get query image
+% load('new_database_cbir.mat','database');% loading the database mat file
 load('new_database_cbir.mat','database');% loading the database mat file
-prompt = 'Enter image index in database , e.g 1, 101 >> ';
-x = input(prompt) ;
+% prompt = 'Enter image index in database , e.g 1, 101 >> ';
+% x = input(prompt) ;
 % prompt = 'Enter image label in database , e.g 1 for beach and 2 for building >> ';
 % label_true = input(prompt) ;
-prompt = 'Enter number of images to be retrieved >> ';
-num_images = input(prompt) ;
-prompt = 'RGB results 1 for true and 0 for false >> ';
-bool_RGB = input(prompt) ;
-prompt = 'HSV results 1 for true and 0 for false >> ';
-bool_HSV = input(prompt) ;
-prompt = 'CNN results 1 for true and 0 for false >> ';
-bool_CNN = input(prompt) ;
-prompt = 'MSE results 1 for true and 0 for false >> ';
-bool_MSE = input(prompt) ;
-prompt = 'SSIM results 1 for true and 0 for false >> ';
-bool_SSIM = input(prompt) ;
-
+% prompt = 'Enter number of images to be retrieved >> ';
+% num_images = input(prompt) ;
+% prompt = 'RGB results 1 for true and 0 for false >> ';
+% bool_RGB = input(prompt) ;
+% prompt = 'HSV results 1 for true and 0 for false >> ';
+% bool_HSV = input(prompt) ;
+% prompt = 'CNN results 1 for true and 0 for false >> ';
+% bool_CNN = input(prompt) ;
+% prompt = 'MSE results 1 for true and 0 for false >> ';
+% bool_MSE = input(prompt) ;
+% prompt = 'SSIM results 1 for true and 0 for false >> ';
+% bool_SSIM = input(prompt) ;
+bool_MSE = 0;
+bool_SSIM = 0;
 n=1;
+num_images = findobj(0, 'tag', 'edit1');
+num_images = str2double(get(num_images, 'string'));
+num_images = num_images + 1; 
+
+rgbhisto = findobj(0, 'tag', 'radiobutton1');
+hsvhisto = findobj(0, 'tag', 'radiobutton2');
+cnnfeat = findobj(0, 'tag', 'radiobutton3');
+msefeat = findobj(0, 'tag', 'radiobutton4');
+ssimfeat = findobj(0, 'tag', 'radiobutton5');
+
+bool_RGB = get(rgbhisto, 'Value');
+bool_HSV = get(hsvhisto, 'Value');
+bool_CNN = get(cnnfeat, 'Value');
+bool_MSE = get(msefeat, 'Value');
+bool_SSIM = get(ssimfeat, 'Value');
 
 
 %% get histograms
 
-imfile = database(x).imageName ;
+% imfile = database(x).imageName ;
+imfile = imfiler;
 fprintf('\n\n The query image = %s :', imfile );
 
 figure('Name','Query Image','NumberTitle','off'), imshow(imfile )
