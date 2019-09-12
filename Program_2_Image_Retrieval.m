@@ -2,7 +2,7 @@
 % The purpose of this program is to do image retrieval from the created
 % database , image folder inside working path
 % clc; clear all; close all;
-% global datab;
+global dbFile;
 global imfiler;
 working_path = 'D:\Documents\MATLAB\MMTECH\Assignment';
 cd(working_path);
@@ -11,7 +11,7 @@ addpath(pwd);
 
 %% Step 0: Get query image
 % load('new_database_cbir.mat','database');% loading the database mat file
-load('new_database_cbir.mat','database');% loading the database mat file
+load(dbFile,'database');% loading the database mat file
 % prompt = 'Enter image index in database , e.g 1, 101 >> ';
 % x = input(prompt) ;
 % prompt = 'Enter image label in database , e.g 1 for beach and 2 for building >> ';
