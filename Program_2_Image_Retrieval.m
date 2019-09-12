@@ -54,10 +54,8 @@ for i=1:numIm
     distHSV(i) = getEuclideanDistance(HistQHSV, database(i).featHSV);
     distCNN(i) = getEuclideanDistance(HistQCNN, database(i).featCNN);
     I = database(i).imageName ;
-    if bool_MSE == 1
+    if (bool_MSE == 1) || (bool_SSIM == 1)
         distMSE(i) = getMSE(imfile, I);
-    end
-    if bool_SSIM == 1
         distSSIM(i) = getSSIM(imfile, I);
     end
     fprintf('Difference between query image and database image %d\n', i);
