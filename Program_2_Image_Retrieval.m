@@ -188,7 +188,11 @@ if bool_CNN == 1
 
     end
     resultCNN = count_trueCNN/(count_trueCNN+count_falseCNN);
+<<<<<<< Updated upstream
     fprintf('\nCNN probability is %f \n', resultCNN);
+=======
+    fprintf('CNN probability is %f \n', resultCNN);
+>>>>>>> Stashed changes
 end
 
 if bool_MSE == 1
@@ -213,7 +217,11 @@ if bool_MSE == 1
         subplot(l,b,j) , imshow(imfileMSE) , title(compose(strMSE)) ;
     end
     resultMSE = count_trueMSE/(count_trueMSE+count_falseMSE);
+<<<<<<< Updated upstream
     fprintf('\nMSE probability is %f \n', resultMSE);
+=======
+    fprintf('MSE probability is %f \n', resultMSE);
+>>>>>>> Stashed changes
 end
 
 
@@ -240,7 +248,11 @@ if bool_SSIM == 1
 
     end
     resultSSIM = count_trueSSIM/(count_trueSSIM+count_falseSSIM);
+<<<<<<< Updated upstream
     fprintf('\nSSIM probability is %f \n', resultSSIM);
+=======
+    fprintf('SSIM probability is %f \n', resultSSIM);
+>>>>>>> Stashed changes
 end
 
 
